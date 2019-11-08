@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Test Vocabularies</h1>
+
+<form method="POST" action="">
+    <label for="">Choose language</label>
+    <select name="lang" class="col-md-8 btn btn-light dropdown-toggle">
+        <!-- <option value="">Choose language</option> -->
+        <!-- <option selected="selected">{{request.form['lang']}}</option> -->
+        <option value="en">English</option>
+        <option value="jp">Japanese</option>
+    </select>
+    <button class="btn btn-xs btn-danger">Generate Question</button>
+</form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <img src="" class="img-responsive">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Question: </p>
+                </div>
+            </div>
+            
+            {% for a in articles %}
+                <div class="row"></div>
+                {% for s in a %}
+                    <div class="col-md-3">
+                        <p>s </p>
+                    </div>
+                {% endfor %} 
+                </div>
+            {% endfor %}
+                
+            <div class="row">
+                <div class="col-md-12">
+                    <p>(2) </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>(3) </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Show Video List</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table border="1" , class="table">
+                <thead>
+                    <tr>
+                        {% for t in titles %}
+                        <th scope="col">{{ t }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in videos %}
+                    <tr>
+                        {% for w in s %}
+                        <td>{{ w }}</td>
+                        {% endfor %}
+                        <td><a class="btn btn-xs btn-warning" href="/showVideo/{{s[0]}}/edit">Edit</a></td>
+                        <td>
+                            <form class="delete-form" action="/showVideo/{{s[0]}}" method="POST">
+                                <button class="btn btn-xs btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

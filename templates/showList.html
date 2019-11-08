@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Show List</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="POST" action="/output">
+                <button class="btn btn-xs btn-warning">Output</button>
+            </form>
+        </div>   
+        <div class="col-md-6">
+            <form class="delete-form" action="/showList/clear" method="POST">
+                <button class="btn btn-xs btn-danger">Delete All</button>
+            </form>
+        </div> 
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <table border="1" , class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        {% for t in titles %}
+                        <th scope="col">{{ t }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in scripts %}
+                    <tr>
+                        <!-- <th scope="row">{{loop.index}}</th> -->
+                        {% for w in range(7) %}
+                        <td>{{ s[w] }}</td>
+                        {% endfor %}
+                        <td>
+                            <form class="delete-form" action="/showList/{{s[6]}}-{{s[0]}}" method="POST">
+                                <button class="btn btn-xs btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

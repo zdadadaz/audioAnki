@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Add Vocabularies</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <form method="POST" action="">
+                    <div class="col">
+                        <input type="text" class="form-control" name="wName" placeholder="Name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="org_exp" placeholder="Org Explaination">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="tran_exp" placeholder="Translation Explaination">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="phrase" placeholder="phrase">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="lang" placeholder="language">
+                    </div>
+                    <div class="col">
+                        <input type=submit value="Add words">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- </div>
+
+<div class="container"> -->
+    <div class="row">
+        <div class="col-md-12">
+            <table border="1" , class="table">
+                <thead>
+                    <tr>
+                        {% for t in titles %}
+                        <th scope="col">{{ t }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in words %}
+                    <tr>
+                        <!-- <th scope="row">{{loop.index}}</th> -->
+                        {% for w in s %}
+                        <td>{{ w }}</td>
+                        {% endfor %}
+                        <td>
+                            <form class="delete-form" action="/wordlist/{{s[1]}}" method="POST">
+                                <button class="btn btn-xs btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

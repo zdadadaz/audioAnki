@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Play with video</h1>
+
+<!--Setting up the add new comment button that is used for collapsing-->
+<div class="text-right">
+    <a class="btn btn-success pull-right" role="button" data-toggle="collapse" href="#collapseComment"
+        aria-expanded="false" aria-controls="collapseComment">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> See Scripts</a>
+</div>
+<!--Comment section title-->
+<h4><strong>Script <span class="glyphicon glyphicon glyphicon-comment" aria-hidden="true"></span></strong></h4>
+<!--Collapse Add a comment form START-->
+ <div class="collapse" id="collapseComment">
+     <div class="well" style="border-left: 5px solid #00C851;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table border="1" , class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                {% for t in titles %}
+                                <th scope="col">{{ t }}</th>
+                                {% endfor %}
+                                <th scope="col">Vid</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in scripts %}
+                            <tr>
+                                <!-- <th scope="row">{{loop.index}}</th> -->
+                                {% for w in range(6) %}
+                                <td>{{ s[w] }}</td>
+                                {% endfor %}
+                                <td>
+                                    <form class="btn btn-xs btn-warning" action="/addlist/{{s[0]}}" method="POST">
+                                        <button class="btn btn-xs btn-warning">Add to List</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+     </div>
+ </div>
+ <!--Collapse Add a comment form END-->
+
+
+<form method="POST" action="/playmp3">
+    <div class="row">
+        <div class="dropdown">
+            <div class="col-md-8">
+                <label for="">Choose language</label>
+                <select name="lang" class="col-md-8 btn btn-light dropdown-toggle">
+                    <!-- <option value="">Choose language</option> -->
+                    <!-- <option selected="selected">{{request.form['lang']}}</option> -->
+                    <option value="en">English</option>
+                    <option value="jp">Japanese</option>
+                </select>
+                <label for="">Adjust audio time</label>
+                <!-- {{ request.form['adjusttime'] }} -->
+                <input name="adjusttime" class="col-md-8" type="number" value="" data-decimals="2" min="-20"
+                    max="20" step="1">
+                <label for="">Start audio time "sid"</label>
+                <input name="ssid" class="col-md-8" type="number" value="" data-decimals="2">
+                <label for="">Number of script</label>       
+                <!-- {{ request.form['lineNum'] }} -->
+                <input name="lineNum" class="col-md-8" type="number" value="" data-decimals="1" min="1" max="9"
+                    step="1">
+                <br>
+                <label for="">Vid</label>
+                <!-- {{ request.form['vid'] }} -->
+                <input name="vid" class="col-md-8" type="number" value="" data-decimals="1" min="0" step="1">
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="Set" class="btn btn-info ">
+            </div>
+        </div>
+    </div>
+    <!-- <button class="btn btn-xs btn-danger">Random play</button> -->
+</form>
+
+<div class="row">
+    <div class="col-md-3">
+        <label for="">language: {{curInfo['lang']}}</label>
+        <label for="">adjust time: {{curInfo['adjtime']}}</label>
+        <label for="">number of script: {{curInfo['lineNum']}}</label>
+        <label for="">vid: {{curInfo['vid']}}</label>
+    </div>
+</div>
+
+<p></p>
+<div class="row">
+    <div class="col-md-3">
+        <form method="POST" action="/randplay">
+            <button class="btn btn-xs btn-warning">Random play</button>
+        </form>
+    </div>
+    <div class="col-md-3">
+        <form method="POST" action="/startheadplay">
+            <button class="btn btn-xs btn-warning">Choose Vid and play</button>
+        </form>
+    </div>
+    <div class="col-md-3">
+        <form method="POST" action="/replay">
+            <button class="btn btn-xs btn-danger">Replay</button>
+        </form>
+    </div>  
+    <div class="col-md-3">
+        <form method="POST" action="/playnext">
+            <button class="btn btn-xs btn-danger">Next</button>
+        </form>
+    </div>  
+    <div class="col-md-3">
+        <form method="POST" action="/playprev">
+            <button class="btn btn-xs btn-danger">Previous</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

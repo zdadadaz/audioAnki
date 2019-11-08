@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Upload</h1>
+
+<div class="container">
+    <form method="post" enctype=multipart/form-data action="">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" name="vName" placeholder="Name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="vSeason" placeholder="season">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="vEpisode" placeholder="episode">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="vlang" placeholder="language">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="vFilename" placeholder="FileName">
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col">
+                <input type=file name=file>
+            </div>
+        </div>
+        <p></p>
+        <input type=submit value=Upload>
+    </form>
+</div>
+
+{% endblock content %}

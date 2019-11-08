@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Edit Video Name</h1>
+<form method="POST" action="">
+    <div class="form-group">
+        <label for="formgroup">vname</label>
+        <textarea name='vName' class="form-control" rows="1">{{video[1]}}</textarea>
+        <label for="formgroup">lang</label>
+        <textarea name='vlang' class="form-control" rows="1">{{video[2]}}</textarea>
+        <label for="formgroup">season</label>
+        <textarea name='vSeason' class="form-control" rows="1">{{video[3]}}</textarea>
+        <label for="formgroup">episode</label>
+        <textarea name='vEpisode' class="form-control" rows="1">{{video[4]}}</textarea>
+        <label for="formgroup">adjust time</label>
+        <textarea name='adjtime' class="form-control" rows="1">{{video[5]}}</textarea>
+        <label for="formgroup">filename</label>
+        <textarea name='filename' class="form-control" rows="1">{{video[6]}}</textarea>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-info ">
+    </form>
+</form>
+
+{% endblock content %}
